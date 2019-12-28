@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>OctaShort</title>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,500,700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+
+    height: 100vh;
+    width: 100%;
+
+    background-color: #111;
+    color: #eee;
+    font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+img#bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 20%;
+}
+h1 {
+	font-size: 5em;
+    font-weight: 700;
+}
+h2 {
+	font-size: 1em;
+    font-weight: 300;
+}
+main {
+	width: 100%;
+	flex: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form {
+	margin-top: 1em;
+	display: flex;
+	width: 40%;
+}
+input {
+	font-size: 1em;
+	margin: 0 .5em;
+    padding: .5em 1em;
+    text-align: center;
+    border-radius: 1em;
+    border: none;
+    transition-duration: .2s;
+}
+input[type=text]{
+	flex: 100%;
+}
+input[type=submit]{
+	cursor: pointer;
+	font-weight: 500;
+}
+input[type=submit]:hover{
+	background-color: #111;
+	color: #eee;
+}
+footer {
+	padding: 1em;
+}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+a {
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+}
+</style>
+</head>
+<body>
+	<img id="bg" src={{bgImage}}>
+	<main>
+        <h1 class="noselect">Shortener</h1>
+        <h2>short.octafox.it</h2>
+        <form>
+            <input type="text" name="original_url" autofocus placeholder="Exemple: https://www.twitch.tv/panetty">
+            <input type="submit" name="submit" value="Shorten" class="noselect">
+        </form>
+    </main>
+    <footer>
+        develop by <a href="https://octafox.it/" target="_blank">OctaFox</a> Community
+    </footer>
+</body>
+</html>
