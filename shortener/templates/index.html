@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>OctaShort</title>
+<title>Shortener</title>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,500,700&display=swap');
 
@@ -59,21 +59,25 @@ form {
 }
 input {
 	font-size: 1em;
-	margin: 0 .5em;
+	margin: 0;
     padding: .5em 1em;
     text-align: center;
-    border-radius: 1em;
     border: none;
     transition-duration: .2s;
 }
 input[type=text]{
 	flex: 100%;
+    border-radius: 1em 0 0 1em;
 }
-input[type=submit]{
+input[type=submit],
+input[type=button]{
 	cursor: pointer;
 	font-weight: 500;
+    border-radius: 0 1em 1em 0;
+	background-color: #ddd;
 }
-input[type=submit]:hover{
+input[type=submit]:hover,
+input[type=button]:hover{
 	background-color: #111;
 	color: #eee;
 }
@@ -94,6 +98,12 @@ a {
     text-decoration: none;
     color: #fff;
 }
+.error {
+    margin: .5em 0;
+    padding: .5em 5em;
+    background: #fc3003;
+    border-radius: 1em;
+}
 </style>
 </head>
 <body>
@@ -101,13 +111,41 @@ a {
 	<main>
         <h1 class="noselect">Shortener</h1>
         <h2>short.octafox.it</h2>
-        <form>
-            <input type="text" name="original_url" autofocus placeholder="Exemple: https://www.twitch.tv/panetty">
-            <input type="submit" name="submit" value="Shorten" class="noselect">
+        
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+
+            {% if shortenedLink %}
+                {{ form.originalUrl(autofocus=true, value=shortenedLink) }}
+                <input type="button" value="Copy" onclick="copyLink()">
+            {% else %}
+                {{ form.originalUrl(autofocus=true) }}
+                {{ form.submit(class_="noselect") }}
+            {% endif %}
+
         </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="error">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        
     </main>
     <footer>
         develop by <a href="https://octafox.it/" target="_blank">OctaFox</a> Community
     </footer>
+
+    <script>
+        function copyLink() {
+            var surl = document.getElementById("originalUrl");
+
+            surl.select();
+            surl.setSelectionRange(0, 99999);
+
+            document.execCommand("copy");
+        } 
+    </script>
 </body>
 </html>
