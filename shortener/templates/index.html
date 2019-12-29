@@ -117,7 +117,7 @@ a {
 
             {% if shortenedLink %}
                 {{ form.originalUrl(autofocus=true, value=shortenedLink) }}
-                <input type="button" value="Copy" onclick="copyLink()">
+                <input id="copy" type="button" value="Copy" onclick="copyLink()">
             {% else %}
                 {{ form.originalUrl(autofocus=true) }}
                 {{ form.submit(class_="noselect") }}
@@ -137,15 +137,25 @@ a {
         develop by <a href="https://octafox.it/" target="_blank">OctaFox</a> Community
     </footer>
 
-    <script>
-        function copyLink() {
+    {% if shortenedLink %}
+        <script>
             var surl = document.getElementById("originalUrl");
 
-            surl.select();
-            surl.setSelectionRange(0, 99999);
+            function copyLink() {
+                surl.select();
+                surl.setSelectionRange(0, 99999);
 
-            document.execCommand("copy");
-        } 
-    </script>
+                document.execCommand("copy");
+            }
+
+            surl.addEventListener("change", e => {
+                const copyBtn = document.getElementById("copy");
+                copyBtn.onclick = "";
+                copyBtn.type = "submit";
+                copyBtn.value = "Shorten";
+            })
+        </script>
+    {% endif %}
+
 </body>
 </html>
