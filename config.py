@@ -3,3 +3,4 @@ import os
 SECRET_KEY = os.urandom(32)
 MONGODB_URI = "MONGOURI"
 MONGODB_DB = "DBNAME"
+DNS_NAME = "DNSNAME"
