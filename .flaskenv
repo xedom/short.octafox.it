@@ -1,2 +1,0 @@
-FLASK_APP=shortener.py
-SECRET_KEY=bhobho

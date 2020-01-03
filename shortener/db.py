@@ -1,9 +1,11 @@
 from pymongo import MongoClient
 from shortener.base64converter import convert
+from config import MONGODB_URI, MONGODB_DB
 
-client = MongoClient("mongodb+srv://admin:admin@arma3italy-eufgo.mongodb.net/test?retryWrites=true&w=majority")
-db = client["octafox_shortener"]
+client = MongoClient(MONGODB_URI)
+db = client[MONGODB_DB]
 links = db["links"]
+
 
 def getOriginalLink(id_link):
     link = links.find_one({"id": id_link})

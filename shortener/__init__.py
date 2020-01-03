@@ -1,7 +1,7 @@
 from flask import Flask
-from config import Config
+from config import SECRET_KEY
 
 shortener = Flask(__name__)
-shortener.config.from_object(Config)
+shortener.config['SECRET_KEY'] = SECRET_KEY
 
 from shortener import routes
