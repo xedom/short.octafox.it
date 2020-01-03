@@ -2,5 +2,3 @@ venv
 pip-log.txt
 *.py[co]
 .idea/*
-
-*/test.py
