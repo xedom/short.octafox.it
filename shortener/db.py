@@ -5,12 +5,6 @@ client = MongoClient("mongodb+srv://admin:admin@arma3italy-eufgo.mongodb.net/tes
 db = client["octafox_shortener"]
 links = db["links"]
 
-bbb = links.find({})
-
-for bho in bbb:
-    print(bho)
-
-
 def getOriginalLink(id_link):
     link = links.find_one({"id": id_link})
 
