@@ -6,7 +6,7 @@ from flask import render_template, flash, redirect
 from shortener import shortener
 from shortener.db import getOriginalLink, getShortLink
 from shortener.forms import ShortenForm
-from config import DNS_NAME
+from config import DOMAIN_NAME
 
 api_bgImgUrl = "https://pixabay.com/api/?key=14756162-bfe9087cd12447df5f51a5fa0&q=nuvole+scuro&lang=it&image_type=photo&orientation=horizontal"
 res = requests.get(url=api_bgImgUrl)
@@ -28,7 +28,7 @@ def shorten():
 
     if pattern.match(url):
         link = getShortLink(url)
-        short_url = "%s/%s" % (DNS_NAME,link["id"])
+        short_url = "%s/%s" % (DOMAIN_NAME,link["id"])
 
         return render_template(
             'index.html',

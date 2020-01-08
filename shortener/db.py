@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 from shortener.base64converter import convert
-from config import MONGODB_URI, MONGODB_DB
+from config import MONGODB_URI, MONGODB_DB, DOMAIN_NAME
 
 client = MongoClient(MONGODB_URI)
 db = client[MONGODB_DB]
@@ -10,7 +10,7 @@ links = db["links"]
 def getOriginalLink(id_link):
     link = links.find_one({"id": id_link})
 
-    return link
+    return link or {"original": DNS_NAME}
 
 
 def getShortLink(original_url):
