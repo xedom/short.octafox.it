@@ -1,4 +1,4 @@
 from shortener import shortener
 
 if __name__ == "__main__":
-    shortener.run(debug=False, port=8001)
+    shortener.run(host="0.0.0.0", debug=True, port=8001)

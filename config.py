@@ -1,6 +1,6 @@
 import os
 
 SECRET_KEY = os.urandom(32)
-MONGODB_URI = "MONGOURI"
-MONGODB_DB = "DBNAME"
-DNS_NAME = "DNSNAME"
+MONGODB_URI = os.getenv('MONGODB_URI')
+MONGODB_DB = os.getenv('MONGODB_DB')
+DOMAIN_NAME = os.getenv('DOMAIN_NAME')
